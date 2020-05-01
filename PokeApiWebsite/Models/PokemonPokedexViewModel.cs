@@ -5,8 +5,14 @@ using System.Threading.Tasks;
 
 namespace PokeApiWebsite.Models
 {
+
+    /// <summary>
+    /// Information for a single Pokemon Pokedex Entry
+    /// </summary>
     public class PokemonPokedexViewModel
     {
+        public string PokedexImageURL { get; set; }
+
         public string Name { get; set; }
 
         public int Id { get; set; }
