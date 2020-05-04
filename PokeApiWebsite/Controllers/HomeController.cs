@@ -42,10 +42,10 @@ namespace PokeApiWebsite.Controllers
             var entry = new PokedexEntryViewModel()
             {
                 Id = result.id,
-                Name = result.name,
-                Height = result.height.ToString(),
-                Weight = result.weight.ToString(),
-                PokedexImageURL = result.sprites.front_default,
+                Name = result.Name,
+                Height = result.Height.ToString(),
+                Weight = result.Weight.ToString(),
+                PokedexImageURL = result.sprites.FrontDefault,
                 MoveList = resultMoves
             };
 
