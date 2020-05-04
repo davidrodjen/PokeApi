@@ -9,7 +9,7 @@ namespace PokeApiWebsite.Models
     /// <summary>
     /// Information for a single Pokemon Pokedex Entry
     /// </summary>
-    public class PokemonPokedexViewModel
+    public class PokedexEntryViewModel
     {
         public string PokedexImageURL { get; set; }
 
