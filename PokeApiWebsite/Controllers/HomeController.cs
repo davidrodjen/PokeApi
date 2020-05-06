@@ -21,19 +21,9 @@ namespace PokeApiWebsite.Controllers
 
         public async Task<IActionResult> Index()
         {
-            PokeApiClient myClient = new PokeApiClient();
-            Pokemon result = await myClient.GetPokemonById(1);
+            int desiredId = 1;
 
-            // Add move list
-            List<string> resultMoves = new List<string>();
-            foreach(Move currMove in result.moves)
-            {
-                resultMoves.Add(currMove.move.name);
-            }
-
-            // moves will be alphabetical
-            resultMoves.Sort();
-
+            Pokemon result = await PokeAPIHelper.GetById(desiredId);
             // Method that can be used with Lambda
             //List<Pokemon> temp;
             //temp.OrderBy(p => p.name)
@@ -46,7 +36,14 @@ namespace PokeApiWebsite.Controllers
                 Height = result.Height.ToString(),
                 Weight = result.Weight.ToString(),
                 PokedexImageURL = result.Sprites.FrontDefault,
-                MoveList = resultMoves
+                MoveList = result.moves
+                    .OrderBy(m => m.move.name)
+                    .Select(m => m.move.name)
+                    .ToArray() // Sorts and arranges by the Array
+
+                // MoveList = (from m in result.moves
+                //              orderBy m.move.name ascending
+                //              select m.move.name).ToArray()
             };
 
             // Uppercase the first letter of each Pokedex name, didn't use the extension method
