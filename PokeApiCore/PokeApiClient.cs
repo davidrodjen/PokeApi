@@ -39,7 +39,7 @@ namespace PokeApiCore
         }
 
         
-        private static async Task<Pokemon> GetPokemonByNameOrId(string name)
+        public static async Task<Pokemon> GetPokemonByNameOrId(string name)
         {
             string url = $"pokemon/{name}";
             HttpResponseMessage response = await client.GetAsync(url);
